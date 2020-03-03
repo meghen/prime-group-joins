@@ -42,6 +42,10 @@ WHERE "description" = 'diet pepsi';
 -- STRETCH GOALS --
 
 -- 9. How much was the total cost for each order?
+SELECT "order_date", sum("quantity"*"unit_price") AS "total" FROM "orders"
+JOIN "line_items" ON "line_items"."order_id" = "orders"."id"
+JOIN "products" ON "products"."id" = "line_items"."product_id"
+GROUP BY "order_date";
 
 -- 10. How much has each customer spent in total?
 
